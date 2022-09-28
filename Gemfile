@@ -78,3 +78,6 @@ end
 
 #add faker gem to generate fake data
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+# setup devise authentication
+gem 'devise'
