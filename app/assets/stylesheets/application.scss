@@ -1,3 +1,7 @@
+// Import Actiontext Richtext css
+//= require actiontext
+@import "./actiontext.scss";
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
