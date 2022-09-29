@@ -1,0 +1,7 @@
+<%= form_with model: note do |form| %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
