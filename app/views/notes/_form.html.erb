@@ -1,6 +1,8 @@
-<%= simple_form_for note do |f|  %>
-  <%= f.input :title, label: false, input_html: { class: 'border-0' }, placeholder: "Title ..."%>
-  <%= f.input :content, label: false, input_html: { class: 'border-0' }, placeholder: "Your note ..." %>
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
-<% end %>
+<div data-controller="formfocus">
+  <%= simple_form_for note do |f|  %>
+    <%= f.input :title, label: false, input_html: { class: 'border-0' }, placeholder: "Title ..."%>
+    <%= f.input :content, label: false, input_html: { class: 'border-0' }, placeholder: "Your note ..." %>
+    <%= f.button :submit, class: "btn-primary" %>
+    <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+  <% end %>
+</div>
