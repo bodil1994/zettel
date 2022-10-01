@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_155007) do
     t.bigint "user_id", null: false
     t.string "title"
     t.index ["user_id"], name: "index_notes_on_user_id"
-  end
+  en
 
   create_table "relationships", force: :cascade do |t|
     t.integer "parent_id"
