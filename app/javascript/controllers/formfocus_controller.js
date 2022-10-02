@@ -10,6 +10,9 @@ export default class extends Controller {
 
     let inputs = this.element.querySelectorAll('[id^="note"],[id*=" note"]');
 
+    inputs[0].focus();
+
+    // add listeners to all inputs and add enter function
     for (let i = 0; i < inputs.length; i++) {
       let input = inputs[i];
       // lastinput not really needed as textelement default of enter is not submit
@@ -21,9 +24,9 @@ export default class extends Controller {
           inputs[i+1].focus();
         }
       }
-      input.addEventListener('keyup', enter, false)
-      input.addEventListener('keypress', enter, false)
-      input.addEventListener('keydown', enter, false)
+      input.addEventListener('keyup', enter, false);
+      input.addEventListener('keypress', enter, false);
+      input.addEventListener('keydown', enter, false);
     }
   }
 }
