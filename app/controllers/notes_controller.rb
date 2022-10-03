@@ -5,15 +5,18 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    @parents_collection = Note.all.filter_map{ |e| e.title unless e.title.blank?}
   end
 
   def create
-    @note = Note.new(note_params)
-    @note.user = current_user
 
-    if @note.save!
-      redirect_to notes_path
+    note = Note.new(title: note_params[:title], content: note_params[:content])
+    note.user = current_user
+
+    if note.save!
+      # Create Relationship with Children
+      Relationship.create!(child_id: note_params[:child_ids], parent_id: note[:id]) unless note_params[:child_ids].blank?
+      # Create Relationship with Parents
+      Relationship.create!(child_id: note[:id], parent_id: note_params[:parent_ids]) unless note_params[:parent_ids].blank?
     else
       render :new
     end
@@ -22,6 +25,6 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :content)
+    params.require(:note).permit(:title, :content, :parent_ids, :child_ids)
   end
 end

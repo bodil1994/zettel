@@ -1,10 +1,10 @@
 <div data-controller="formfocus tagging">
   <%= simple_form_for note do |f|  %>
     <%= f.input :title, label: false, input_html: { class: 'border-0' }, placeholder: "Title ..."%>
-    <%= f.association :parent_relationships, as: :select, label: false, collection: parents_collection, input_html: { class: 'chosen-select' } %>
     <%= f.input :content, label: false, input_html: { class: 'border-0' }, placeholder: "Your note ..." %>
+    <%= f.association :parents, as: :select, label: "parents", collection: current_user.notes.filter_map { |note| [note.title, note.id] unless note.title.blank?}, input_html: { multiple: false } %>
+    <%= f.association :children, as: :select, label: "children", collection: current_user.notes.filter_map { |note| [note.title, note.id] unless note.title.blank?}, input_html: { multiple: false } %>
     <%= f.button :submit, class: "btn-primary" %>
     <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
   <% end %>
-  <%= parents_collection.each {|e| print e} %>
 </div>
