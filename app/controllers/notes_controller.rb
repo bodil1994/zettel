@@ -5,6 +5,7 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+    @parents_collection = Note.all.filter_map{ |e| e.title unless e.title.blank?}
   end
 
   def create

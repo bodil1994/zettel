@@ -81,3 +81,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 # setup devise authentication
 gem 'devise'
+
+# Setup parent and child tagging
+gem 'jquery-rails'
