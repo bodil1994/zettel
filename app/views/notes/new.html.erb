@@ -1,1 +1,1 @@
-<%= render "notes/form", note: @note %>
+<%= render :partial => "notes/form", :locals => {note: @note, parents_collection: @parents_collection} %>

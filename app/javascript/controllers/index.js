@@ -9,3 +9,6 @@ application.register("formfocus", FormfocusController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TaggingController from "./tagging_controller"
+application.register("tagging", TaggingController)
