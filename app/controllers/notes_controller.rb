@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   def index
     @notes = current_user.notes
+    @roots = roots
   end
 
   def new
@@ -26,5 +27,9 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :content, :parent_ids, :child_ids)
+  end
+
+  def roots
+    Note.all.select {|note| note.root?}
   end
 end

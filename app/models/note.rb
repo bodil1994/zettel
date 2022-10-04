@@ -21,4 +21,8 @@ class Note < ApplicationRecord
     end
     siblings
   end
+
+  def root?
+    self.parents.blank?
+  end
 end
