@@ -13,4 +13,12 @@ class Note < ApplicationRecord
   def ancestors
     self.parents | self.parents.map(&:ancestors).flatten
   end
+
+  def siblings
+    siblings = []
+    self.parents.to_a.each do |parent|
+      siblings << parent.children.excluding(self)
+    end
+    siblings
+  end
 end
