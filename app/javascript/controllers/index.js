@@ -4,6 +4,7 @@
 
 import { application } from "./application"
 
+
 import FormfocusController from "./formfocus_controller"
 application.register("formfocus", FormfocusController)
 
@@ -12,3 +13,6 @@ application.register("hello", HelloController)
 
 import TaggingController from "./tagging_controller"
 application.register("tagging", TaggingController)
+
+import TestController from "./test_controller"
+application.register("test", TestController)

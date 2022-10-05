@@ -84,3 +84,6 @@ gem 'devise'
 
 # Setup parent and child tagging
 gem 'jquery-rails'
+
+# 3d for visualizing data in rails
+gem "d3-rails"

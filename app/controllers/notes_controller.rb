@@ -8,6 +8,10 @@ class NotesController < ApplicationController
     @note = Note.new
   end
 
+  def test
+
+  end
+
   def create
 
     note = Note.new(title: note_params[:title], content: note_params[:content])
