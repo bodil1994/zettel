@@ -1,2 +1,20 @@
 <div class="container" data-controller="test">
+  <pre id="json"></pre>
 </div>
+<script>
+  fetch("/tree_data")
+    .then(response => response.json())
+    .then((data) => {
+      // do something with the json
+      const dataSpec = {source: data, key: "title"}
+      console.log(dataSpec)
+      const myChart = d3.indentedTree(dataSpec);
+      showChart(myChart);
+      function showChart(_chart) {
+        d3.select(".container")
+          .append("div")
+          .attr("class", "chart")
+          .call(_chart);
+      }
+    })
+</script>

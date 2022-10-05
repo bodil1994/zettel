@@ -9,8 +9,6 @@ class NotesController < ApplicationController
   end
 
   def test
-    # @data = tree_data
-    render json: tree_data
   end
 
   def tree_data
@@ -21,7 +19,8 @@ class NotesController < ApplicationController
         children: []
       }
     end
-    tree_children(nodes)
+    data = { title: "All my notes", children: tree_children(nodes) }
+    render json: data
   end
 
   def tree_children(nodes)

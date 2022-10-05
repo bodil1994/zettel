@@ -4,6 +4,15 @@ import * as d3 from "d3"
 export default class extends Controller {
   connect() {
     console.log("hello")
+    // fetch("/tree_data")
+    // .then(response => response.json())
+    // .then((data) => {
+    //   // do something with the json
+    //   document.getElementById("json").textContent = JSON.stringify(data,undefined, 2);
+    // })
+  }
+
+  circles() {
     const circleRadii = [40, 20, 10];
     const svgContainer = d3.select(".container")
       .append("svg")
@@ -24,6 +33,5 @@ export default class extends Controller {
         else if (d === 20) { color = "purple";}
         return color;
       });
-
   }
 }
