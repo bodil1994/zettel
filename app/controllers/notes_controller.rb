@@ -9,8 +9,31 @@ class NotesController < ApplicationController
   end
 
   def test
-
+    # @data = tree_data
+    render json: tree_data
   end
+
+  def tree_data
+    nodes = roots.map do |note|
+      {
+        id: note.id,
+        title: note.title,
+        children: []
+      }
+    end
+    tree_children(nodes)
+  end
+
+  def tree_children(nodes)
+    nodes.each do |node|
+      next if Note.find(node[:id]).children.blank?
+      Note.find(node[:id]).children.each do |child|
+        node[:children] << { id: child.id, title: child.title, children: []}
+      end
+      tree_children(node[:children])
+    end
+  end
+
 
   def create
 
@@ -36,4 +59,6 @@ class NotesController < ApplicationController
   def roots
     Note.all.select {|note| note.root?}
   end
+
+
 end

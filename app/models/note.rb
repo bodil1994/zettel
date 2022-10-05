@@ -14,6 +14,10 @@ class Note < ApplicationRecord
     self.parents | self.parents.map(&:ancestors).flatten
   end
 
+  def map_nodes(nodes)
+
+  end
+
   def siblings
     siblings = []
     self.parents.to_a.each do |parent|
