@@ -1,15 +1,30 @@
 import { Controller } from "@hotwired/stimulus"
-import * as d3 from "d3"
+
+
 // Connects to data-controller="test"
 export default class extends Controller {
   connect() {
     console.log("hello")
-    // fetch("/tree_data")
-    // .then(response => response.json())
-    // .then((data) => {
-    //   // do something with the json
-    //   document.getElementById("json").textContent = JSON.stringify(data,undefined, 2);
-    // })
+    this.createTree()
+  }
+
+  createTree() {
+    console.log("createTree")
+    fetch("/tree_data")
+    .then(response => response.json())
+    .then((data) => {
+      // do something with the json
+      const dataSpec = {source: data, key: "title"}
+      console.log(dataSpec)
+      const myChart = d3.indentedTree(dataSpec);
+      showChart(myChart);
+      function showChart(_chart) {
+        d3.select(".indented-tree")
+          .append("div")
+          .attr("class", "chart")
+          .call(_chart);
+      }
+    })
   }
 
   circles() {

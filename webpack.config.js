@@ -17,5 +17,8 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
-  ]
+  ],
+  resolve: {
+    mainFields: ['browser', 'module', 'main'],
+  },
 }
