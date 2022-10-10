@@ -87,3 +87,6 @@ gem 'jquery-rails'
 
 # 3d for visualizing data in rails
 gem "d3-rails"
+
+# adding algolia seach
+gem 'algoliasearch-rails'

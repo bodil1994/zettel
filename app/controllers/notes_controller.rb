@@ -1,4 +1,9 @@
 class NotesController < ApplicationController
+  require 'algolia'
+
+  # client = Algolia::Search::Client.create(ENV["ALGOLIA_SEARCH_APP_ID"], ENV["ALGOLIA_ADMIN_API_KEY"])
+  # index = client.init_index('notes')
+
   def index
     @notes = current_user.notes
     @roots = roots
