@@ -1,6 +1,7 @@
 class Note < ApplicationRecord
   include AlgoliaSearch
-  algoliasearch do; end
+  algoliasearch do;
+  end
 
   belongs_to :user
   has_many :parent_relationships, foreign_key: :child_id, class_name: "Relationship"
