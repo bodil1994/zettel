@@ -4,7 +4,7 @@
   <div class="row justify-content-center align-items-center">
     <div class="col-8" data-controller="search">
       <form action="#" class="form">
-        <input type="text" class="form-control" id="search-input" name="notes"
+        <input type="text" class="form-control" id="search-input" data-action="search#search" name="notes"
         placeholder="Search all notes by title or content" data-algolia-id="<%= ENV["ALGOLIA_SEARCH_APP_ID"]%>"
         data-algolia-search-key="<%= ENV["ALGOLIA_SEARCH_API_KEY"]%>" data-search-target="searchBar">
       </form>
