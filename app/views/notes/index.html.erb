@@ -1,15 +1,16 @@
-<div class="container">
-
+<div class="container" data-controller="search">
   <%= link_to "new note", new_note_path, class: "btn my-3" %>
   <div class="row justify-content-center align-items-center">
-    <div class="col-8" data-controller="search">
+    <div class="col-8" >
       <form action="#" class="form">
-        <input type="text" class="form-control" id="search-input" data-action="search#search" name="notes"
+        <input type="text" class="form-control" id="search-input" data-action="keypress->search#reset  search#search" name="notes"
         placeholder="Search all notes by title or content" data-algolia-id="<%= ENV["ALGOLIA_SEARCH_APP_ID"]%>"
         data-algolia-search-key="<%= ENV["ALGOLIA_SEARCH_API_KEY"]%>" data-search-target="searchBar">
       </form>
     </div>
   </div>
-  <%= render "notes/note_cards", notes: @notes%>
+  <%= turbo_frame_tag :notes do %>
+    <%= render "notes/note_cards", notes: @notes%>
+  <% end %>
 </div>
 <%= console %>

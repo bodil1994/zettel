@@ -5,8 +5,13 @@ class NotesController < ApplicationController
   # index = client.init_index('notes')
 
   def index
+
     @notes = current_user.notes
     @roots = roots
+
+  if params[:ids].present?
+    @notes = @notes.select{ |x| params[:ids].include?(x.id.to_s)}
+  end
   end
 
   def new

@@ -10,7 +10,7 @@ export default class extends Controller {
   search(event) {
     console.log("Search started")
     event.preventDefault() // prevent reload of page
-    const query = event.target.value
+    const query = event.target.value.toLowerCase()
     const applicationID = this.searchBarTarget.dataset.algoliaId;
     const searchKey = this.searchBarTarget.dataset.algoliaSearchKey;
 
@@ -32,9 +32,35 @@ export default class extends Controller {
     .search(query)
     .then(({ hits }) => {
       console.log(hits);
+      this.results(hits);
     })
     .catch(err => {
       console.log(err);
     });
   }
+
+  results(hits) {
+    console.log("results started")
+    let ids = "/?"
+    if (hits.length === 0) {
+      ids += "ids[]=none"
+    } else {
+      hits.forEach((element) => {
+        ids += "ids[]=" + element.id + "&"
+      })
+    };
+    console.log(ids)
+    const frame = document.getElementById('notes');
+    console.log(frame)
+    frame.src = ids
+    frame.reload();
+  };
+
+  reset(event) {
+    console.log("Reset started");
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      event.target.value = "";
+    }
+  };
 }
