@@ -7,6 +7,7 @@ class NotesController < ApplicationController
     @notes = roots
 
     if params[:ids].present?
+      @notes = current_user.notes
       @notes = @notes.select{ |x| params[:ids].include?(x.id.to_s)}
     end
   end

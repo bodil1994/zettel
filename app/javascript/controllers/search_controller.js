@@ -54,13 +54,21 @@ export default class extends Controller {
     console.log(frame)
     frame.src = ids
     frame.reload();
+    console.log("frame reloaded")
   };
 
   reset(event) {
     console.log("Reset started");
     if (event.keyCode === 13) {
       event.preventDefault();
-      event.target.value = "";
+      // event.target.value = "";
     }
+
+    if (event.target.value === "") {
+      const frame = document.getElementById('notes');
+      frame.src = "/"
+      frame.reload();
+      console.log("empty frame reloaded")
+    };
   };
 }
