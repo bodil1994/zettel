@@ -1,8 +1,6 @@
 class NotesController < ApplicationController
   require 'algolia'
-
-  # client = Algolia::Search::Client.create(ENV["ALGOLIA_SEARCH_APP_ID"], ENV["ALGOLIA_ADMIN_API_KEY"])
-  # index = client.init_index('notes')
+  before_action :set_note, only: [:show, :edit, :update, :destroy]
 
   def index
 
@@ -69,5 +67,7 @@ class NotesController < ApplicationController
     Note.all.select {|note| note.root?}
   end
 
-
+  def set_note
+    @note = Note.find(params[:id])
+  end
 end
