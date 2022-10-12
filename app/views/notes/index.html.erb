@@ -10,7 +10,8 @@
     </div>
   </div>
   <%= turbo_frame_tag :notes do %>
-    <%= render "notes/note_cards", notes: @notes%>
+    <%= render @notes %>
   <% end %>
 </div>
+
 <%= console %>
