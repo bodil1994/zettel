@@ -9,16 +9,16 @@ class NotesController < ApplicationController
     @notes = current_user.notes
     @roots = roots
 
-  if params[:ids].present?
-    @notes = @notes.select{ |x| params[:ids].include?(x.id.to_s)}
-  end
+    if params[:ids].present?
+      @notes = @notes.select{ |x| params[:ids].include?(x.id.to_s)}
+    end
   end
 
   def new
     @note = Note.new
   end
 
-  def test
+  def edit
   end
 
   def tree_data
