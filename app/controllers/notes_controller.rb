@@ -4,8 +4,7 @@ class NotesController < ApplicationController
 
   def index
 
-    @notes = current_user.notes
-    @roots = roots
+    @notes = roots
 
     if params[:ids].present?
       @notes = @notes.select{ |x| params[:ids].include?(x.id.to_s)}
@@ -64,7 +63,7 @@ class NotesController < ApplicationController
   end
 
   def roots
-    Note.all.select {|note| note.root?}
+    Note.all.select {|note| note.root? && note.user == current_user}
   end
 
   def set_note

@@ -3,6 +3,8 @@ class Note < ApplicationRecord
   algoliasearch do;
   end
 
+  # after_create_commit { broadcast_append_to "note_#{self.note.id}_children", target: "post#{self.post.id}_comments" }
+
   belongs_to :user
   has_many :parent_relationships, foreign_key: :child_id, class_name: "Relationship"
   has_many :parents, through: :parent_relationships
@@ -18,8 +20,9 @@ class Note < ApplicationRecord
     self.parents | self.parents.map(&:ancestors).flatten
   end
 
-  def map_nodes(nodes)
-
+  # Depth only works 1 parent can have N children not N-N as currently set up in DB
+  def depth
+    self.ancestors.count
   end
 
   def siblings
