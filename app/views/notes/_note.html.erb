@@ -1,9 +1,10 @@
-
-<%= link_to edit_note_path(note), class: "text-decoration-none text-body" do %>
-  <div class="card card-body">
-    <h3><%= note.title %></h3>
-    <p><%= note.content %></p>
-    <p>parent: <%= note.parents[0].title unless note.parents[0].nil? %></p>
-    <p>child: <%= note.children[0].title unless note.children[0].nil?  %></p>
-  </div>
+<%= turbo_frame_tag dom_id(note) do %>
+  <%= link_to edit_note_path(note), class: "text-decoration-none text-body" do %>
+    <div class="card card-body">
+      <h3><%= note.title %></h3>
+      <p><%= note.content %></p>
+      <p>parent: <%= note.parents[0].title unless note.parents[0].nil? %></p>
+      <p>child: <%= note.children[0].title unless note.children[0].nil?  %></p>
+    </div>
+  <% end %>
 <% end %>
