@@ -1,0 +1,21 @@
+
+form.form-search {
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+
+  .search-magnifierLabel, .search-reset {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background: none;
+    stroke-width: 1.6;
+    padding: 0px;
+  }
+}
