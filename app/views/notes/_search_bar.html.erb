@@ -6,7 +6,7 @@
       </path>
     </svg>
   </label>
-  <input aria-labelledby="search-label" type="search" class="form-control border-0" id="search-input" data-action="keypress->search#reset  search#search" name="notes" data-com.bitwarden.browser.user-edited="yes"
+  <input type="search" class="form-control border-0" id="search-input" data-action="keypress->search#reset  search#search" name="notes"
   placeholder="Search all notes by title or content" data-algolia-id="<%= ENV["ALGOLIA_SEARCH_APP_ID"]%>"
   data-algolia-search-key="<%= ENV["ALGOLIA_SEARCH_API_KEY"]%>" data-search-target="searchBar">
   <button type="reset" title="Clear the query" class="search-reset" data-action=search#reset>

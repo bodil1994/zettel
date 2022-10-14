@@ -1,6 +1,17 @@
 <div class="container" data-controller="search">
-  <%= link_to "new note", new_note_path, class: "btn my-3" %>
+
+  <%# Toggle Button %>
+  <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
+    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked="" data-com.bitwarden.browser.user-edited="yes">
+    <label class="btn btn-outline-dark" for="vbtn-radio1">Note View</label>
+    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off" data-com.bitwarden.browser.user-edited="yes">
+    <label class="btn btn-outline-dark" for="vbtn-radio2">Tree View</label>
+  </div>
+
+  <%= link_to "new note", new_note_path, class: "btn btn-dark my-3" %>
+
   <%= render "notes/search_bar" %>
+
   <%= turbo_frame_tag :notes do %>
     <%= render @notes %>
   <% end %>
