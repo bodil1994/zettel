@@ -1,4 +1,6 @@
-<div class="container" data-controller="test">
-  <pre id="json"></pre>
+<%= turbo_frame_tag :notes do %>
+  <div data-controller="test">
+  <%# <pre id="json"></pre> %>
   <div class="indented-tree"></div>
-</div>
+  </div>
+<% end %>

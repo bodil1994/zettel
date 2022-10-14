@@ -18,3 +18,6 @@ application.register("tagging", TaggingController)
 
 import TestController from "./test_controller"
 application.register("test", TestController)
+
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
