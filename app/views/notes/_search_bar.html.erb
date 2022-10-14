@@ -9,7 +9,7 @@
   <input aria-labelledby="search-label" type="search" class="form-control border-0" id="search-input" data-action="keypress->search#reset  search#search" name="notes" data-com.bitwarden.browser.user-edited="yes"
   placeholder="Search all notes by title or content" data-algolia-id="<%= ENV["ALGOLIA_SEARCH_APP_ID"]%>"
   data-algolia-search-key="<%= ENV["ALGOLIA_SEARCH_API_KEY"]%>" data-search-target="searchBar">
-  <button type="reset" title="Clear the query" class="search-reset">
+  <button type="reset" title="Clear the query" class="search-reset" data-action=search#reset>
     <svg width="20" height="20" viewBox="0 0 20 20">
       <path d="M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
       </path>

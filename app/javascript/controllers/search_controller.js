@@ -58,13 +58,14 @@ export default class extends Controller {
   };
 
   reset(event) {
+    console.log(event)
     console.log("Reset started");
     if (event.keyCode === 13) {
       event.preventDefault();
       // event.target.value = "";
     }
 
-    if (event.target.value === "") {
+    if (event.target.value === "" || event.type === "click" ) {
       const frame = document.getElementById('notes');
       frame.src = "/"
       frame.reload();
