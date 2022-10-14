@@ -1,1 +1,4 @@
-<%= render :partial => "notes/form", :locals => {note: @note, parents_collection: @parents_collection} %>
+<%= turbo_frame_tag "new_note" do %>
+  <%= render :partial => "notes/form", :locals => {note: @note, parents_collection: @parents_collection} %>
+  <%= link_to "Cancel", "/", class:"btn btn-dark"%>
+<% end %>

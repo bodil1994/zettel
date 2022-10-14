@@ -23,4 +23,13 @@ export default class extends Controller {
     frame.reload();
     console.log("frame reloaded")
   }
+
+  showNew() {
+    console.log("showNew started")
+    const frame = document.getElementById('new_note');
+    console.log(frame)
+    frame.src = "/notes/new"
+    frame.reload();
+    console.log("frame reloaded")
+  }
 }

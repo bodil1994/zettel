@@ -9,6 +9,9 @@
   </div>
 
   <%= link_to "new note", new_note_path, class: "btn btn-dark my-3" %>
+  <button class="btn btn-dark my-3" data-action="toggle#showNew">New Note</button>
+  <%= turbo_frame_tag "new_note" do %>
+  <% end %>
   <%= turbo_frame_tag :notes do %>
     <%= render "notes/search_bar" %>
     <%= render @notes %>
