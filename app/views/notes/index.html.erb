@@ -7,10 +7,8 @@
     <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off" data-com.bitwarden.browser.user-edited="yes">
     <label class="btn btn-outline-dark" for="vbtn-radio2" data-action="click->toggle#showTree">Tree View</label>
   </div>
-
-  <%= link_to "new note", new_note_path, class: "btn btn-dark my-3" %>
-  <button class="btn btn-dark my-3" data-action="toggle#showNew">New Note</button>
   <%= turbo_frame_tag "new_note" do %>
+   <%= link_to "New Note", new_note_path, class: "btn btn-dark" %>
   <% end %>
   <%= turbo_frame_tag :notes do %>
     <%= render "notes/search_bar" %>
