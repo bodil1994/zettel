@@ -2,6 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
+  static targets = [ "searchBar", "magnifier" ]
+
   connect() {
     console.log("toggle controller connected")
   }
@@ -9,10 +11,14 @@ export default class extends Controller {
   showTree() {
     console.log("showTree started")
     const frame = document.getElementById('notes');
-    console.log(frame)
-    frame.src = "/test"
+    console.log(frame);
+    frame.src = "/test";
     frame.reload();
-    console.log("frame reloaded")
+    console.log("frame reloaded");
+
+    console.log("TEEEEEESSSTTT")
+    this.searchBarTarget.classList.add("d-none")
+    // console.log(this.searchBarTarget.classList.add("d-none"))
   }
 
   showNotes() {
@@ -22,5 +28,7 @@ export default class extends Controller {
     frame.src = "/"
     frame.reload();
     console.log("frame reloaded")
+    this.magnifierTarget.setAttribute('height', '20')
+    this.searchBarTarget.classList.remove("d-none")
   }
 }

@@ -1,18 +1,30 @@
 <div class="container" data-controller="search toggle">
 
-  <%# Toggle Button %>
-  <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
-    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked="" data-com.bitwarden.browser.user-edited="yes">
-    <label class="btn btn-outline-dark" for="vbtn-radio1" data-action="click->toggle#showNotes">Note View</label>
-    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off" data-com.bitwarden.browser.user-edited="yes">
-    <label class="btn btn-outline-dark" for="vbtn-radio2" data-action="click->toggle#showTree">Tree View</label>
-  </div>
-  <%= turbo_frame_tag "new_note" do %>
-   <%= link_to "New Note", new_note_path, class: "btn btn-dark" %>
-  <% end %>
+  <%# toggle button %>
+
+
+    <%#  search bar %>
+      <%= render "notes/search_bar" %>
+
+    <%#  button toolbar %>
+    <div class="btn-toolbar justify-content-between my-3" role="toolbar" aria-label="Toolbar with button groups">
+      <%= turbo_frame_tag "new_note" do %>
+        <%= link_to "New Note", new_note_path, class: "btn btn-dark" %>
+      <% end %>
+
+      <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
+        <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked="" data-com.bitwarden.browser.user-edited="yes">
+        <label class="btn btn-outline-dark" for="vbtn-radio1" data-action="click->toggle#showNotes">Note View</label>
+        <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off" data-com.bitwarden.browser.user-edited="yes">
+        <label class="btn btn-outline-dark" for="vbtn-radio2" data-action="click->toggle#showTree">Tree View</label>
+      </div>
+    </div>
   <%= turbo_frame_tag :notes do %>
-    <%= render "notes/search_bar" %>
+    <%# show notes %>
     <%= render @notes %>
+
   <% end %>
+
 </div>
+
 <%= console %>
