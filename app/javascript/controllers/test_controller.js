@@ -26,7 +26,7 @@ export default class extends Controller {
       }
     })
   }
-
+// These were just for fun testing to draw circles
   circles() {
     const circleRadii = [40, 20, 10];
     const svgContainer = d3.select(".container")
