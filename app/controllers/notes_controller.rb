@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   def index
 
     @notes = roots
-
+    @breadcrumbs = create_breadcrumbs([], prepare_data).compact
     if params[:ids].present?
       @notes = current_user.notes
       @notes = @notes.select{ |x| params[:ids].include?(x.id.to_s)}
@@ -20,22 +20,39 @@ class NotesController < ApplicationController
   end
 
   def tree_data
+    render json: prepare_data
+  end
+
+  def create_breadcrumbs(breadcrumbs, data)
+    # breadcrumbs.concat data[:breadcrumbs] unless data[:breadcrumbs].nil?
+    unless data[:children].blank?
+      data[:children].each do |child|
+        breadcrumbs << {id: child[:id], path: child[:breadcrumbs]}
+        create_breadcrumbs(breadcrumbs, child)
+      end
+    end
+    breadcrumbs
+  end
+
+  def prepare_data
     nodes = roots.map do |note|
       {
         id: note.id,
+        breadcrumbs: [{ id: note.id, label: note.title, current: false }],
         title: note.title,
         children: []
       }
     end
     data = { title: "All my notes", children: tree_children(nodes) }
-    render json: data
   end
 
   def tree_children(nodes)
     nodes.each do |node|
       next if Note.find(node[:id]).children.blank?
       Note.find(node[:id]).children.each do |child|
-        node[:children] << { id: child.id, title: child.title, children: []}
+        node_child = { id: child.id, breadcrumbs: node[:breadcrumbs], title: child.title, children: [] }
+        node_child[:breadcrumbs] << { id: child.id, label: child.title, current: false }
+        node[:children] << node_child
       end
       tree_children(node[:children])
     end

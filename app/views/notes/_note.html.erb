@@ -1,9 +1,12 @@
 
 <div class="mb-3">
+
   <%= turbo_frame_tag dom_id(note) do %>
 
     <div class= "card card-body border-0" style="padding-left: <%= 20 + note.depth * 20%>px">
       <div class="card-title collapsed" data-bs-toggle="collapse" href="<%= "#collapse_note_#{note.id}" %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <%= render "shared/breadcrumbs" %>
+        <%= breadcrumb = @breadcrumbs.select {|element| element[:id] == note.id } %>
         <%= note.title %>
       </div>
 
