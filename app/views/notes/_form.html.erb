@@ -6,4 +6,5 @@
     <%= f.association :children, as: :select, label: "children", collection: current_user.notes.filter_map { |note| [note.title, note.id] unless note.title.blank?}, input_html: { multiple: false } %>
     <%= f.button :submit, class: "btn-primary" %>
   <% end %>
+  <%# <input type="submit" name="commit" form="new_note" value="Submit"/> %>
 </div>
