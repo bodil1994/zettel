@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = [ "searchBar", "magnifier" ]
+  static targets = [ "searchBar", "magnifier", "newNoteFrame"]
 
   connect() {
     console.log("toggle controller connected")
@@ -30,5 +30,11 @@ export default class extends Controller {
     console.log("frame reloaded")
     this.magnifierTarget.setAttribute('height', '20')
     this.searchBarTarget.classList.remove("d-none")
+  }
+
+  showNewNote() {
+    console.log("showNewNotes started")
+    this.newNoteFrameTarget.src="/notes/new"
+    // console.log(this.newNoteFrameTarget.src)
   }
 }

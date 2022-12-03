@@ -8,9 +8,8 @@
 
     <%#  button toolbar %>
     <div class="btn-toolbar justify-content-between my-3" role="toolbar" aria-label="Toolbar with button groups">
-      <%= turbo_frame_tag "new_note" do %>
-        <%= link_to "+", new_note_path, class: "btn btn-dark" %>
-      <% end %>
+
+    <button class="btn btn-dark" data-action="click->toggle#showNewNote">+</button>
 
       <div class="btn-group" role="group" aria-label="Vertical radio toggle button group">
         <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked="" data-com.bitwarden.browser.user-edited="yes">
@@ -19,6 +18,8 @@
         <label class="btn btn-outline-dark" for="vbtn-radio2" data-action="click->toggle#showTree">Tree View</label>
       </div>
     </div>
+  <%= turbo_frame_tag "new_note", data: {toggle_target:"newNoteFrame"} do %>
+  <% end %>
   <%= turbo_frame_tag :notes do %>
     <%# show notes %>
     <%= render @notes %>
