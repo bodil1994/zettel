@@ -1,5 +1,5 @@
 <div data-controller="formfocus tagging">
-  <%= simple_form_for note, action:"/" do |f|  %>
+  <%= simple_form_for note do |f|  %>
     <%= f.input :title, label: false, input_html: { class: 'border-0' }, placeholder: "Title ..."%>
     <%= f.input :content, label: false, input_html: { class: 'border-0' }, placeholder: "Your note ..." %>
     <%= f.association :parents, as: :select, label: "parents", collection: current_user.notes.filter_map { |note| [note.title, note.id] unless note.title.blank?}, input_html: { multiple: false } %>
